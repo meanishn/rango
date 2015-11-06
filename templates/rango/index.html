@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <style>
+        #category {
+            background-color: lightblue;
+            font-size: 20px;
+            position: center;
+            color: white;
+        }
+        #nav a {
+            background-color: grey;
+            color:white;
+            display: inline;
+        }
+    </style>
+        
+    </head>
+    <body>
+        <h1>Rango</h1>
+        <button id="btn">click here</button>
+        <p>visits: {{ visits }} </p>
+        <p id="p"></p>      
+        {%if user.username %}
+            <strong> welcome {{user.username}} </strong>
+        {%else%}
+            <strong>Welcome Anonymous user</strong>
+        {% endif %}
+        
+        <p id="test">Click here</p>
+        
+        <div id ="category">
+            <ul>
+              {%for category in categories%}
+                  <li><a href= "/rango/category/{{category.slug}}/">{{category.name}}</a></li>
+            {%endfor%}
+        </ul>
+        </div>
+        
+        <div id='nav'>
+        
+        <a href= "/rango/about"> About </a>
+        
+        {% if user.is_authenticated %}
+            
+            <a href= "/rango/add_category/">Create category </a>
+            <a href= "/rango/logout/">logout</a>
+        {% else %}
+            <a href= "/rango/register/">Register</a>
+            
+            <a href= "/rango/login">Login</a>
+        {%endif%}
+        </div>
+        
+        
+    </body>
+    
+</html>

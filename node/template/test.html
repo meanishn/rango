@@ -1,0 +1,24 @@
+<html>
+    
+<head>
+<script src="/socket.io/socket.io.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+    var socket=io("localhost", {port: 3000});
+    
+    socket.on('from python', function(msg){
+        $('#msg').append($('<li>').text(msg));
+    });
+    if (document.cookie) {
+        alert(document.cookie.split(';'));
+    }
+    $('#p').html("hi");
+    
+</script>
+</head>
+
+<body>
+    <p id='p'></p>
+    <ul id='msg'></ul>
+</body>
+</html>

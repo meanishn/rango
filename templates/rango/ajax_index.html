@@ -1,0 +1,34 @@
+<html>
+
+    {% load static %}
+    <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+   <script src="http://localhost:8002/socket.io/socket.io.js"></script>
+    <script>
+                
+                var socket=io('http://localhost:8002');
+                {% for session in sessions %}
+                socket.on('category-{{session.session_key}}', function(msg){
+                    var category=jQuery.parseJSON(msg);
+                    $("ul").append('<li>'+ category.name +'</li>');
+                   });
+                {% endfor %}
+                
+                              
+            
+        </script>
+    </head>
+ 
+    <body>
+                 
+        <div id ="category">
+            <ul>
+            
+            {% for category in cat_list %}
+            <li>{{category.name}} </li>
+            {% endfor %}
+            </ul>    
+        </div>
+        <p id='p'></p>
+    </body>
+</html>

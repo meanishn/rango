@@ -1,0 +1,12 @@
+<h1>{{category.name}}</h1>
+<ul>
+    {% for page in category.page_set.all %}
+        <li><a href={{page.url}}>{{page.title}}</a> </li>    
+    {% endfor%}
+</ul>
+{% if user.is_authenticated %}
+    <a href= "/rango/category/add_page/{{category.slug}}/">Add Page </a>
+    
+{%else%}
+    <p> Please <a href= "/rango/login/"> login </a> to add pages.</p>
+{% endif %}

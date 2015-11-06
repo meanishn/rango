@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+   $(document).ready(function(){
+    
+            $('#btn').click(function(event){
+                event.preventDefault();
+                var cat_id=$(this).attr("data-id");  
+               $.post("/rango/demo_cat/", {c_id : cat_id}, function(data){
+                    alert(data); });
+               
+            });
+    });
+</script>
+    </head>
+    <body>
+        <h1> This is a rango application. </h1>
+        <button id="btn" data-id=5 >Hello</button>
+        <br>
+            <p id='p'></p>
+        To go back click <a href='/rango/'>here</a>
+        <table>
+            <th>Testing</th>
+            <tr>
+                <td id='cat'>add category</td>
+            </tr>
+        </table>
+        
+    </body>
+    
+    
+    
+    
+</html>
